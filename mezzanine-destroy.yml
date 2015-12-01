@@ -1,0 +1,5 @@
+# Terminate virtual machine example
+- local_action:
+    module: azure
+    name: my-virtual-machine
+    state: absent
