@@ -100,3 +100,34 @@ Delete resource group linux-test-group? [y/n] y
 info:    group delete command OK
 [ec2-user@ip-172-31-11-251 ansible-book-mezzanine]$ 
 
+```console
+[ec2-user@ip-172-31-53-132 ~]$ azure vm create --nic-name testnic --public-ip-name testpip --image-urn OpenLogic:CentOS:7.1:7.1.20150731 --admin-username azure
+user --ssh-publickey-file ~/azure-key-pair.pub --location eastus --vnet-name testvnet --vnet-subnet-name testsubnet testgrp testvm linux
+info:    Executing command vm create
++ Looking up the VM "testvm"
+info:    Verifying the public key SSH file: /home/ec2-user/azure-key-pair.pub
+info:    Using the VM Size "Standard_A1"
+info:    The [OS, Data] Disk or image configuration requires storage account
++ Retrieving storage accounts
+info:    Using the storage account "clidd0bed2344be0eee14491" in "eastus"
++ Looking up the NIC "testnic"
+info:    An nic with given name "testnic" not found, creating a new one
++ Looking up the virtual network "testvnet"
+info:    Found an existing virtual network "testvnet"
+info:    Existing Subnets:
+info:      testsubnet:10.0.0.0/27
+info:    Verifying subnet
++ Looking up the subnet "testsubnet" under the virtual network "testvnet"
+info:    Subnet with given name "testsubnet" exists under the virtual network "testvnet", using this subnet
+info:    Found public ip parameters, trying to setup PublicIP profile
++ Looking up the public ip "testpip"
+info:    PublicIP with given name "testpip" not found, creating a new one
+Enter public IP domain name: demov3-master
++ Creating public ip "testpip"
++ Looking up the public ip "testpip"
++ Creating NIC "testnic"
++ Looking up the NIC "testnic"
++ Creating VM "testvm"
+info:    vm create command OK
+[ec2-user@ip-172-31-53-132 ~]$
+```
