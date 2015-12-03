@@ -1,13 +1,19 @@
+---
+
 # Provision virtual machine example
-- local_action:
-    module: azure
-    name: my-virtual-machine
-    role_size: Small
-    image: b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-precise-12_04_3-LTS-amd64-server-20131205-en-us-30GB
-    location: 'East US'
-    user: ubuntu
-    ssh_cert_path: /path/to/azure_x509_cert.pem
-    storage_account: my-storage-account
-    wait: yes
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - secrets.yml
+
+  tasks:
+
+    - command: azure group create linux-test-group "East US"
+
+    - command: azure vm quick-create linux-test-group linux-single-machine "East US" linux OpenLogic:CentOS:7.1:7.1.20150731 azureuser {{ admin_user_password }}
+ 
     
     

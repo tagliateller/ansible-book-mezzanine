@@ -1,5 +1,15 @@
-# Terminate virtual machine example
-- local_action:
-    module: azure
-    name: my-virtual-machine
-    state: absent
+---
+
+# Provision virtual machine example
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - secrets.yml
+
+  tasks:
+
+    - command: azure group -y delete linux-test-group
+
