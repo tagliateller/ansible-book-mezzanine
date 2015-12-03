@@ -131,3 +131,4 @@ Enter public IP domain name: demov3-master
 info:    vm create command OK
 [ec2-user@ip-172-31-53-132 ~]$
 ```
+Hier fehlt noch der Parameter --public-ip-domain-name
