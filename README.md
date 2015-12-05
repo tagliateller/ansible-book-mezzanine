@@ -138,6 +138,6 @@ Hier fehlt noch der Parameter --public-ip-domain-name
 # Noch ein Versuch 
 ```console
 azure config mode arm
-azure group create testgrp
+azure group create testgrp -l eastus
 azure vm create --nic-name testnic --public-ip-name testpip --image-urn OpenLogic:CentOS:7.1:7.1.20150731 --admin-username azureuser --ssh-publickey-file ~/azure-key-pair.pub --location eastus --vnet-name testvnet --vnet-subnet-name testsubnet --public-ip-domain-name demov3-master testgrp testvm linux
 ```
