@@ -100,6 +100,8 @@ Delete resource group linux-test-group? [y/n] y
 info:    group delete command OK
 [ec2-user@ip-172-31-11-251 ansible-book-mezzanine]$ 
 
+# Anlegen der Maschine im ARM - Mode mit SSH-Key
+
 ```console
 [ec2-user@ip-172-31-53-132 ~]$ azure vm create --nic-name testnic --public-ip-name testpip --image-urn OpenLogic:CentOS:7.1:7.1.20150731 --admin-username azure
 user --ssh-publickey-file ~/azure-key-pair.pub --location eastus --vnet-name testvnet --vnet-subnet-name testsubnet testgrp testvm linux
@@ -132,3 +134,10 @@ info:    vm create command OK
 [ec2-user@ip-172-31-53-132 ~]$
 ```
 Hier fehlt noch der Parameter --public-ip-domain-name
+
+# Noch ein Versuch 
+```console
+azure config mode arm
+azure group create testgrp
+azure vm create --nic-name testnic --public-ip-name testpip --image-urn OpenLogic:CentOS:7.1:7.1.20150731 --admin-username azureuser --ssh-publickey-file ~/azure-key-pair.pub --location eastus --vnet-name testvnet --vnet-subnet-name testsubnet --public-ip-domain-name demov3-master testgrp testvm linux
+```
