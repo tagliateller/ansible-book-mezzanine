@@ -6,14 +6,20 @@
   connection: local
   gather_facts: false
 
+  vars:
+    azure_image: OpenLogic:CentOS:7.1:7.1.20150731
+    azure_location: eastus
+     
   vars_files:
     - secrets.yml
 
   tasks:
 
-    - command: azure group create linux-test-group "East US"
+    - name: "erzeuge group"
+      command: azure group create mezz-group -l {{ azure_location }}
 
-    - command: azure vm quick-create linux-test-group linux-single-machine "East US" linux OpenLogic:CentOS:7.1:7.1.20150731 azureuser {{ admin_user_password }}
- 
+    - name: "erzeuge master"
+      command: azure vm create --nic-name mezz-nic --public-ip-name mezz-pip --image-urn {{ azure_image }} --admin-username azureuser --ssh-publickey-file ~/azure-key-pair.pub --location {{ azure_location }} --vnet-name mezz-vnet --vnet-address-prefix 10.0.0.0/24 --vnet-subnet-name mezz-subnet --vnet-subnet-address-prefix 10.0.0.0/27 --public-ip-domain-name mezz-master openshift-origin-group mezzanine linux    
+
     
     
