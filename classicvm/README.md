@@ -1,0 +1,2 @@
+cd playbooks
+vagrant up
